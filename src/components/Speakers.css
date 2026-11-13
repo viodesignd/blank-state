@@ -1,0 +1,17 @@
+.speakers {
+  gap: 37px;
+}
+
+.speakers__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.speakers__cta {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  max-width: var(--content-width);
+  padding-inline: 110px;
+}

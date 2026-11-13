@@ -1,0 +1,68 @@
+.speaker-card {
+  display: flex;
+  flex-direction: column;
+  gap: 21px;
+  width: 312px;
+  height: 511px;
+  outline: none;
+}
+
+.speaker-card--start {
+  justify-content: flex-start;
+}
+.speaker-card--center {
+  justify-content: center;
+}
+.speaker-card--end {
+  justify-content: flex-end;
+}
+
+.speaker-card__photo {
+  flex-shrink: 0;
+  width: 100%;
+  height: 262px;
+  overflow: hidden;
+}
+
+.speaker-card__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1);
+  transition: filter 0.4s ease;
+}
+
+/* Hover / keyboard focus: reveal the full-color photo */
+.speaker-card:hover .speaker-card__photo img,
+.speaker-card:focus-visible .speaker-card__photo img {
+  filter: grayscale(0);
+}
+
+.speaker-card:focus-visible .speaker-card__photo {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+}
+
+.speaker-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.speaker-card__name {
+  font-family: var(--font-display);
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-h4);
+  letter-spacing: var(--ls-h4);
+  color: var(--color-primary);
+}
+
+.speaker-card__role {
+  font-family: var(--font-body);
+  font-size: var(--fs-body-l);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-body-l);
+  letter-spacing: var(--ls-body-l);
+  color: var(--color-white);
+}
