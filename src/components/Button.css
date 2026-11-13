@@ -1,0 +1,33 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding-block: 19px;
+  background: var(--color-primary);
+  color: var(--color-black);
+  font-family: var(--font-body);
+  font-size: var(--fs-button);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-button);
+  line-height: normal;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: filter 0.15s ease;
+}
+
+.button:hover {
+  filter: brightness(0.92);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: 2px;
+}
+
+.button--s {
+  padding-inline: 60px;
+}
+
+.button--l {
+  padding-inline: 90px;
+}
