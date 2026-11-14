@@ -9,7 +9,7 @@ const PILLARS = [
 
 function WhyAttend() {
   return (
-    <section className="section why-attend" aria-labelledby="why-attend-title">
+    <section id="why-attend" className="section why-attend" aria-labelledby="why-attend-title">
       <div className="section__inner">
         <h2 id="why-attend-title" className="section-title">
           Why Attend

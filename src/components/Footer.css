@@ -1,0 +1,81 @@
+.footer {
+  padding: 76px var(--space-margin) var(--space-margin);
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+.footer__inner {
+  display: flex;
+  flex-direction: column;
+  max-width: 1326px; /* 1440 − 2 × 57, centered on wider screens */
+  margin-inline: auto;
+  border-top: 4px solid var(--color-primary);
+  padding-top: var(--space-margin);
+}
+
+.footer__logo {
+  width: 441.551px;
+  height: 68.944px;
+}
+
+/* City · dates · venue, aligned to the Figma columns */
+.footer__info {
+  display: grid;
+  grid-template-columns: 595px 581px 1fr;
+  align-items: start;
+  margin-top: 12px;
+}
+
+.footer__heading {
+  font-family: var(--font-display);
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-h4);
+  letter-spacing: var(--ls-h4);
+}
+
+.footer__address {
+  display: flex;
+  flex-direction: column;
+  margin-top: 9px;
+  font-family: var(--font-body);
+  font-size: var(--fs-body-m);
+  font-style: normal;
+  line-height: var(--lh-body-m);
+  letter-spacing: var(--ls-body-m);
+}
+
+/* Social links */
+.footer__social {
+  display: flex;
+  justify-content: space-between;
+  margin: 35px 0 0;
+  padding: 0 var(--space-margin);
+  list-style: none;
+  font-family: var(--font-body);
+  font-size: var(--fs-body-l);
+  line-height: var(--lh-body-l);
+  letter-spacing: var(--ls-body-l);
+}
+
+.footer__social a {
+  transition: color 0.2s ease;
+}
+
+.footer__social a:hover {
+  color: var(--color-primary);
+}
+
+.footer__social a:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+}
+
+.footer__copyright {
+  margin-top: var(--space-margin);
+  font-family: var(--font-body);
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-caption);
+  letter-spacing: var(--ls-caption);
+}

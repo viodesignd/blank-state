@@ -1,0 +1,118 @@
+/* High-contrast final call to action: the one light section */
+.register {
+  background: var(--color-grey);
+  color: var(--color-black);
+}
+
+.register__inner {
+  gap: 58px;
+}
+
+/* Black title, navy underline, 25px extra space above/below (as Testimonials) */
+.register__title {
+  margin-block: var(--space-title);
+  color: var(--color-black);
+  border-bottom-color: var(--color-secondary-700);
+}
+
+/* ---------- Form ---------- */
+.register__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 58px;
+}
+
+.register__fields {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.register__field {
+  position: relative;
+  width: 401px;
+}
+
+.register__input {
+  display: block;
+  width: 100%;
+  height: 55px;
+  padding: 0 8px;
+  border: 2px solid var(--color-black);
+  border-radius: 0;
+  background: transparent;
+  color: var(--color-black);
+  font-family: var(--font-display);
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-h4);
+  letter-spacing: var(--ls-h4);
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.register__input::placeholder {
+  color: var(--color-black);
+  opacity: 1;
+}
+
+/* Hover / focus: navy border (matches the title underline) */
+.register__input:hover {
+  border-color: var(--color-secondary-700);
+}
+
+.register__input:focus {
+  border-color: var(--color-secondary-700);
+  box-shadow: inset 0 0 0 1px var(--color-secondary-700);
+}
+
+/* Error: thicker border + message below */
+.register__input.has-error {
+  box-shadow: inset 0 0 0 2px currentColor;
+}
+
+.register__error {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  font-family: var(--font-body);
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-caption);
+  letter-spacing: var(--ls-caption);
+  color: var(--color-black);
+}
+
+/* Visible keyboard focus on the grey background */
+.register .button:focus-visible {
+  outline-color: var(--color-secondary-700);
+}
+
+/* ---------- Thank-you message ---------- */
+.register__success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 173px; /* same height as the form, so the page doesn't jump */
+  text-align: center;
+  outline: none;
+}
+
+.register__success-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-h3);
+  letter-spacing: var(--ls-h3);
+}
+
+.register__success-text {
+  font-family: var(--font-body);
+  font-size: var(--fs-body-l);
+  line-height: var(--lh-body-l);
+}

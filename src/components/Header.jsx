@@ -11,8 +11,8 @@ function Header() {
 
       <nav className="header__nav" aria-label="Main">
         <a href="#speakers">Speakers</a>
-        <a href="#schedule">Schedule</a>
-        <a href="#about">About</a>
+        <a href="#agenda">Schedule</a>
+        <a href="#why-attend">About</a>
       </nav>
 
       <Button size="S">Register now</Button>
