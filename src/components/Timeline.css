@@ -1,0 +1,129 @@
+/* Layout: 85px label row · 196px line · 85px label row (as in Figma) */
+.timeline {
+  --label-row: 85px;
+  --line-depth: 196px;
+
+  position: relative;
+  width: 1320px;
+  height: calc(var(--label-row) * 2 + var(--line-depth));
+}
+
+/* ---------- Line ---------- */
+.timeline__line {
+  position: absolute;
+  top: var(--label-row);
+  left: 0;
+  display: block;
+  overflow: visible;
+}
+
+.timeline__line path {
+  fill: none;
+  stroke: var(--color-white);
+  stroke-width: 4;
+  stroke-linejoin: miter;
+  /* pathLength="1" → hide the whole line, then draw it in */
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.timeline.is-playing .timeline__line path {
+  animation: timeline-draw var(--draw-duration) linear forwards;
+}
+
+@keyframes timeline-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* ---------- Talks ---------- */
+.timeline__talks {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.talk {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  height: var(--label-row);
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.talk--top {
+  top: 0;
+}
+
+.talk--bottom {
+  top: calc(var(--label-row) + var(--line-depth));
+}
+
+/* Fade in when the drawing line reaches the talk */
+.timeline.is-playing .talk {
+  animation: talk-in var(--fade-duration) ease-out var(--delay) forwards;
+}
+
+@keyframes talk-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.talk__content {
+  display: flex;
+  align-items: flex-start;
+  gap: 21px;
+  padding-block: 14px;
+}
+
+.talk__time {
+  flex-shrink: 0;
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-h3);
+  letter-spacing: var(--ls-h3);
+  color: var(--color-primary);
+}
+
+.talk__info {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  color: var(--color-white);
+}
+
+.talk__title {
+  font-family: var(--font-body);
+  font-size: var(--fs-body-l);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-body-l);
+  letter-spacing: var(--ls-body-l);
+}
+
+.talk__speaker {
+  font-family: var(--font-body);
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-caption);
+  letter-spacing: var(--ls-caption);
+}
+
+/* Reduced motion: show everything immediately */
+@media (prefers-reduced-motion: reduce) {
+  .timeline__line path {
+    stroke-dashoffset: 0;
+  }
+  .talk {
+    opacity: 1;
+    transform: none;
+  }
+  .timeline.is-playing .timeline__line path,
+  .timeline.is-playing .talk {
+    animation: none;
+  }
+}

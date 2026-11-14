@@ -1,0 +1,71 @@
+.agenda__inner {
+  gap: 102px;
+}
+
+/* In Figma the Agenda title has extra breathing room (25px above/below) */
+.agenda__heading {
+  padding-block: var(--space-title);
+}
+
+.agenda__title {
+  height: 114px; /* Figma: 25 + 64 + 25, border drawn inside */
+}
+
+/* ---------- Day tabs (Figma "Date Pick") ---------- */
+.agenda__tabs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 732px;
+  margin-inline: auto;
+}
+
+.date-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 171px;
+  height: 76px;
+  padding: 14px 16px;
+  border: 0;
+  background: var(--color-grey);
+  color: var(--color-black);
+  font-family: var(--font-display);
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-h4);
+  letter-spacing: var(--ls-h4);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease;
+}
+
+/* Inactive hover: preview of the active outline */
+.date-tab:not(.is-selected):hover {
+  box-shadow: inset 0 0 0 2px var(--color-primary);
+}
+
+/* Active: black, 2px yellow border, H3 white */
+.date-tab.is-selected {
+  background: var(--color-black);
+  color: var(--color-white);
+  box-shadow: inset 0 0 0 2px var(--color-primary);
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-h3);
+  letter-spacing: var(--ls-h3);
+  cursor: default;
+}
+
+.date-tab:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: 3px;
+}
+
+/* ---------- Timeline panel ---------- */
+.agenda__panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 433px;
+}

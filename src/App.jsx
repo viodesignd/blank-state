@@ -1,3 +1,4 @@
+import Agenda from './components/Agenda.jsx'
 import Header from './components/Header.jsx'
 import Hero from './components/Hero.jsx'
 import Speakers from './components/Speakers.jsx'
@@ -11,6 +12,7 @@ function App() {
         <Hero />
         <WhyAttend />
         <Speakers />
+        <Agenda />
       </main>
     </>
   )
