@@ -1,5 +1,6 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { AGENDA } from '../data/agenda.js'
+import { useInView } from '../hooks/useInView.js'
 import Timeline from './Timeline.jsx'
 import './Agenda.css'
 
@@ -8,30 +9,10 @@ const SWITCH_DRAW = 0.8 // seconds, when switching days
 
 function Agenda() {
   const [activeId, setActiveId] = useState(AGENDA[0].id)
-  const [inView, setInView] = useState(false)
   const [drawDuration, setDrawDuration] = useState(FIRST_DRAW)
-  const sectionRef = useRef(null)
-  const tabRefs = useRef([])
-
   // Start the animation once, when ~40% of the section is visible
-  useEffect(() => {
-    const el = sectionRef.current
-    if (!el || !('IntersectionObserver' in window)) {
-      setInView(true)
-      return
-    }
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true)
-          observer.disconnect()
-        }
-      },
-      { threshold: 0.4 },
-    )
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [])
+  const [sectionRef, inView] = useInView(0.4)
+  const tabRefs = useRef([])
 
   const selectDay = (id) => {
     if (id === activeId) return
