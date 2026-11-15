@@ -1,10 +1,11 @@
-/* Layout: 85px label row · 196px line · 85px label row (as in Figma) */
+/* Horizontal layout: label row · 196px line · label row (as in Figma).
+   The line's width follows the container (measured in Timeline.jsx). */
 .timeline {
   --label-row: 85px;
   --line-depth: 196px;
 
   position: relative;
-  width: 1320px;
+  width: 100%;
   height: calc(var(--label-row) * 2 + var(--line-depth));
 }
 
@@ -111,6 +112,56 @@
   font-weight: var(--fw-medium);
   line-height: var(--lh-caption);
   letter-spacing: var(--ls-caption);
+}
+
+/* ---------- Tablet: time stacked under/over the title, next to the line ---------- */
+@media (max-width: 1199px) {
+  .timeline {
+    --label-row: 139px;
+  }
+
+  .talk--top {
+    align-items: flex-end;
+  }
+  .talk--bottom {
+    align-items: flex-start;
+  }
+
+  .talk--top .talk__content {
+    flex-direction: column-reverse;
+  }
+  .talk--bottom .talk__content {
+    flex-direction: column;
+  }
+}
+
+/* ---------- Mobile: vertical zigzag, line draws top to bottom ----------
+   Right-level talks: title + time on the left of the line (right-aligned);
+   left-level talks: time + title on the right of the line. */
+.timeline--vertical .timeline__line {
+  top: 0;
+}
+
+.timeline--vertical .talk {
+  height: auto;
+  align-items: flex-start;
+}
+
+.timeline--vertical .talk__content {
+  flex-direction: row;
+}
+
+.timeline--vertical .talk--right .talk__content {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+.timeline--vertical .talk--right .talk__info {
+  align-items: flex-end;
+}
+
+.timeline--vertical .talk__info {
+  gap: 4px;
 }
 
 /* Reduced motion: show everything immediately */
