@@ -68,7 +68,16 @@
   font-display: swap;
 }
 
-/* ---------- Design tokens (from Figma "Desktop" frame) ---------- */
+/* ---------- Design tokens ----------
+   Values come from the Figma Desktop (1440), Tablet (834) and Mobile (430)
+   frames. Sizes scale smoothly between the mobile and desktop values:
+     clamp(mobile, fluid, desktop)  — fluid is a straight line from 430 → 1440px
+   and the extra min(…, Nvw) keeps big text shrinking below 430px so nothing
+   overflows on small phones.
+
+   Breakpoints (used in component CSS):
+     Desktop ≥ 1200px · Tablet 601–1199px · Mobile ≤ 600px
+     (the header switches to the hamburger menu at ≤ 767px) */
 :root {
   /* Colors */
   --color-primary: #f7d232; /* primary/base, primary/200 */
@@ -89,35 +98,35 @@
   --fw-bold: 700;
   --fw-black: 900;
 
-  /* Display */
-  --fs-display: 120px;
+  /* Display — 120 / ~86 / 64 */
+  --fs-display: min(clamp(64px, 40.16px + 5.545vw, 120px), 14.88vw);
   --lh-display: 1.1;
   --ls-display: -1px;
 
-  /* Headings */
-  --fs-h2: 64px;
+  /* Headings — H2 64 / 48 / 36 · H3 48 / 36 / 28 · H4 32 / 26 / 22 */
+  --fs-h2: min(clamp(36px, 24.08px + 2.772vw, 64px), 8.37vw);
   --lh-h2: 1;
   --ls-h2: -1px;
 
-  --fs-h3: 48px;
+  --fs-h3: clamp(28px, 19.49px + 1.98vw, 48px);
   --lh-h3: 1;
   --ls-h3: -0.3px;
 
-  --fs-h4: 32px;
+  --fs-h4: clamp(22px, 17.74px + 0.99vw, 32px);
   --lh-h4: 1.1;
   --ls-h4: -0.2px;
 
-  /* Body */
-  --fs-body-l: 20px;
+  /* Body — L 20 → 18 · M 18 → 16 */
+  --fs-body-l: clamp(18px, 17.15px + 0.198vw, 20px);
   --lh-body-l: 1.4;
   --ls-body-l: 0;
 
-  --fs-body-m: 18px;
+  --fs-body-m: clamp(16px, 15.15px + 0.198vw, 18px);
   --lh-body-m: 1.5;
   --ls-body-m: 0;
 
-  /* Button */
-  --fs-button: 18px;
+  /* Button — 18 → 16 (Figma "Button/UI/mobile") */
+  --fs-button: clamp(16px, 15.15px + 0.198vw, 18px);
   --ls-button: -0.16px;
 
   /* Caption */
@@ -126,11 +135,11 @@
   --ls-caption: 0;
 
   /* Spacing */
-  --space-section: 57px; /* Desktop/Section */
-  --space-margin: 57px; /* Desktop/Margin */
-  --space-title: 25px; /* Desktop/Title */
-  --space-section-x: 60px; /* side padding of content sections */
-  --space-section-gap: 78px; /* title → content */
+  --space-section: clamp(29px, 6.93vw - 0.8px, 57px); /* section top/bottom: 57 / 57 / 29 */
+  --space-margin: clamp(16px, 4.06vw - 1.46px, 57px); /* footer margin: 57 → 16 */
+  --space-title: clamp(20px, 17.87px + 0.495vw, 25px); /* Desktop/Title: 25 → 20 */
+  --space-section-x: clamp(16px, 4.356vw - 2.73px, 60px); /* side padding: 60 / 32 / 16 */
+  --space-section-gap: 78px; /* title → content (same on all frames) */
   --content-width: 1320px;
 }
 
@@ -209,7 +218,7 @@ a {
 .section-title {
   display: flex;
   align-items: center;
-  height: 95px;
+  height: clamp(76px, 67.91px + 1.881vw, 95px); /* 95 desktop → 76 mobile */
   padding-block: var(--space-title);
   border-bottom: 4px solid var(--color-primary);
   font-family: var(--font-display);

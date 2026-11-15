@@ -56,3 +56,30 @@
   line-height: var(--lh-body-l);
   letter-spacing: var(--ls-body-l);
 }
+
+/* ---------- Mobile (Figma 430 frame) ----------
+   One column; items 2 and 4 sit on the right with the icon on the right. */
+@media (max-width: 600px) {
+  .why-attend__pillars {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 51px;
+  }
+
+  .pillar,
+  .pillar--1,
+  .pillar--2,
+  .pillar--3,
+  .pillar--4 {
+    flex: none;
+    justify-content: flex-start;
+    height: auto;
+    padding-top: 0;
+  }
+
+  .pillar--2,
+  .pillar--4 {
+    align-items: flex-end;
+    text-align: right;
+  }
+}

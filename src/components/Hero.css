@@ -4,7 +4,7 @@
   flex-direction: column;
   justify-content: flex-end;
   height: 824px;
-  padding: 0 var(--space-section) 30px;
+  padding: 0 var(--space-margin) 30px; /* 57 desktop · 32 tablet */
   color: var(--color-white);
   background:
     linear-gradient(var(--color-overlay), var(--color-overlay)),
@@ -62,4 +62,64 @@
   letter-spacing: var(--ls-body-l);
   text-align: right;
   white-space: nowrap;
+}
+
+/* ---------- Tablet (Figma 834 frame) ---------- */
+@media (max-width: 1199px) {
+  .hero {
+    height: 750px;
+  }
+
+  /* "REBUILD THE / FUTURE." wraps naturally */
+  .hero__title-line2 {
+    white-space: normal;
+  }
+
+  .hero__content {
+    gap: 71px;
+  }
+
+  .hero__cta {
+    padding-inline: 130px;
+  }
+
+  .hero__date {
+    margin-top: 72px;
+  }
+}
+
+/* ---------- Mobile (Figma 430 frame) ---------- */
+@media (max-width: 600px) {
+  .hero {
+    height: 857px;
+    padding: 0 32px 25px;
+  }
+
+  .hero__content {
+    gap: 71px;
+  }
+
+  /* Button centered */
+  .hero__cta {
+    display: flex;
+    justify-content: center;
+    padding-inline: 0;
+  }
+
+  .hero__cta .button {
+    width: 260px; /* Figma Button S, Device=Mobile */
+    padding-inline: 0;
+  }
+
+  .hero__date {
+    margin-top: 66px;
+    padding-inline: 0;
+  }
+}
+
+/* Very narrow phones: keep the side padding in proportion */
+@media (max-width: 380px) {
+  .hero {
+    padding-inline: 20px;
+  }
 }

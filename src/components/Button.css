@@ -41,3 +41,23 @@
 .button--l {
   padding-inline: 90px;
 }
+
+/* Tablet (Figma Button Device=Tablet): 57px tall, S is 180px wide */
+@media (max-width: 1199px) {
+  .button {
+    padding-block: 17.5px;
+  }
+  .button--s {
+    padding-inline: 30px;
+  }
+}
+
+/* Mobile (Device=Mobile): 57px tall with 16px text, L ≈ 260–300px wide */
+@media (max-width: 600px) {
+  .button {
+    padding-block: 19px;
+  }
+  .button--l {
+    padding-inline: 75px;
+  }
+}
