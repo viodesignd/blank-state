@@ -4,13 +4,15 @@
 
 /* In Figma the scrolling title has 25px of extra space above and below */
 .testimonials__title {
+  height: 95px; /* same on every frame in Figma */
   margin-block: var(--space-title);
 }
 
 /* ---------- Staircase layout ---------- */
 .testimonials__grid {
   display: grid;
-  grid-template-columns: repeat(3, 425px);
+  grid-template-columns: repeat(3, minmax(0, 425px)); /* 425px cards, narrower below 1440 */
+  column-gap: 20px;
   grid-template-rows: repeat(2, 1fr);
   justify-content: space-between;
   height: 433px;
@@ -97,6 +99,32 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* ---------- Tablet (Figma 834 frame): same staircase, 3 equal columns ---------- */
+@media (max-width: 1199px) {
+  .testimonials__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 0;
+    height: 666px;
+  }
+}
+
+/* ---------- Mobile (Figma 430 frame) ----------
+   One column; cards 2 and 4 sit on the right with the circle on the right.
+   The left-to-right stagger becomes top to bottom. */
+@media (max-width: 600px) {
+  .testimonials__grid {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+
+  .testimonial--2 .testimonial__figure,
+  .testimonial--4 .testimonial__figure {
+    align-items: flex-end;
+    text-align: right;
   }
 }
 
