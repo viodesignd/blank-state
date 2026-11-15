@@ -2,10 +2,12 @@
   gap: 37px;
 }
 
-.speakers__row {
-  display: flex;
-  align-items: center;
+/* 3 columns × 2 rows on desktop (312px cards) */
+.speakers__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 312px);
   justify-content: space-between;
+  row-gap: var(--space-section-gap);
 }
 
 .speakers__cta {
@@ -14,4 +16,38 @@
   width: 100%;
   max-width: var(--content-width);
   padding-inline: 110px;
+}
+
+/* ---------- Tablet (Figma 834 frame): 3 columns of ~246px, 16px apart ---------- */
+@media (max-width: 1199px) {
+  .speakers__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 16px;
+  }
+}
+
+/* ---------- Mobile (Figma 430 frame) ----------
+   2 columns of ~191px, 16px apart; the right column sits lower. */
+@media (max-width: 600px) {
+  .speakers .marquee {
+    height: 88px;
+  }
+
+  .speakers__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .speakers__grid .speaker-card:nth-child(odd) {
+    justify-content: flex-start;
+  }
+
+  .speakers__grid .speaker-card:nth-child(even) {
+    justify-content: flex-end;
+  }
+
+  .speakers__cta {
+    justify-content: center;
+    padding-inline: 0;
+  }
 }

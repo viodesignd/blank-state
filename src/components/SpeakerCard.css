@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: 21px;
-  width: 312px;
+  width: 100%; /* 312 desktop · ~246 tablet · ~191 mobile */
   height: 511px;
   outline: none;
 }

@@ -9,17 +9,15 @@ import Marquee from './Marquee.jsx'
 import SpeakerCard from './SpeakerCard.jsx'
 import './Speakers.css'
 
-const SPEAKER_ROWS = [
-  [
+/* align: where each card sits in its slot on desktop/tablet (staggered layout).
+   On mobile the cards flow into 2 columns: left column top, right column bottom. */
+const SPEAKERS = [
     { name: 'Alex Riviera', role: 'Creative Director, Spotify', photo: alexRiviera, align: 'center' },
     { name: 'Nina Li', role: 'Head of UX, Figma', photo: ninaLi, align: 'end' },
     { name: 'Marcus Holt', role: 'Design Futurist', photo: marcusHolt, align: 'start' },
-  ],
-  [
     { name: 'Alma Castro', role: 'Senior Product Designer, Airbnb', photo: almaCastro, align: 'end' },
     { name: 'Jonas Weber', role: 'Independent Type Designer', photo: jonasWeber, align: 'center' },
     { name: 'Rina Patel', role: 'Innovation Lead, Google Design', photo: rinaPatel, align: 'start' },
-  ],
 ]
 
 function Speakers() {
@@ -28,13 +26,11 @@ function Speakers() {
       <div className="section__inner">
         <Marquee id="speakers-title" text="Speakers" />
 
-        {SPEAKER_ROWS.map((row, i) => (
-          <div key={i} className="speakers__row">
-            {row.map((speaker) => (
-              <SpeakerCard key={speaker.name} {...speaker} />
-            ))}
-          </div>
-        ))}
+        <div className="speakers__grid">
+          {SPEAKERS.map((speaker) => (
+            <SpeakerCard key={speaker.name} {...speaker} />
+          ))}
+        </div>
       </div>
 
       <div className="speakers__cta">

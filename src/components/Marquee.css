@@ -35,6 +35,13 @@
   }
 }
 
+/* Slower on mobile */
+@media (max-width: 600px) {
+  .marquee__track {
+    animation-duration: 30s;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .marquee__track {
     animation: none;
