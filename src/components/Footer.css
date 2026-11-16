@@ -14,14 +14,16 @@
 }
 
 .footer__logo {
-  width: 441.551px;
-  height: 68.944px;
+  width: min(441.551px, 100%);
+  height: auto;
 }
 
 /* City · dates · venue, aligned to the Figma columns */
 .footer__info {
   display: grid;
-  grid-template-columns: 595px 581px 1fr;
+  /* 595 / 581 / rest on desktop; the first two shrink on smaller screens */
+  grid-template-columns: minmax(0, 595px) minmax(0, 581px) minmax(max-content, 1fr);
+  column-gap: 0;
   align-items: start;
   margin-top: 12px;
 }
@@ -78,4 +80,59 @@
   font-weight: var(--fw-medium);
   line-height: var(--lh-caption);
   letter-spacing: var(--ls-caption);
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 1199px) {
+  .footer {
+    padding-bottom: 57px;
+  }
+
+  .footer__inner {
+    padding-top: 57px;
+  }
+
+  .footer__info {
+    column-gap: 24px;
+  }
+
+  .footer__copyright {
+    margin-top: 57px;
+  }
+}
+
+/* ---------- Mobile (Figma 430 frame) ----------
+   City left · date right, venue + address below, links spread across. */
+@media (max-width: 600px) {
+  .footer {
+    padding-top: 64px;
+    padding-bottom: 40px;
+  }
+
+  .footer__inner {
+    padding-top: 48px;
+  }
+
+  .footer__info {
+    grid-template-columns: 1fr auto;
+    row-gap: 32px;
+    margin-top: 40px;
+  }
+
+  .footer__info > :nth-child(2) {
+    text-align: right;
+  }
+
+  .footer__info > :nth-child(3) {
+    grid-column: 1 / -1;
+  }
+
+  .footer__social {
+    margin-top: 72px;
+    padding: 0;
+  }
+
+  .footer__copyright {
+    margin-top: 64px;
+  }
 }

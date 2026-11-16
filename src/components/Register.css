@@ -10,6 +10,7 @@
 
 /* Black title, navy underline, 25px extra space above/below (as Testimonials) */
 .register__title {
+  height: 95px; /* same on every frame in Figma */
   margin-block: var(--space-title);
   color: var(--color-black);
   border-bottom-color: var(--color-secondary-700);
@@ -26,12 +27,15 @@
 .register__fields {
   display: flex;
   justify-content: space-between;
+  gap: 16px;
   width: 100%;
 }
 
+/* 401px on desktop, shares the row on smaller screens */
 .register__field {
   position: relative;
-  width: 401px;
+  flex: 0 1 401px;
+  min-width: 0;
 }
 
 .register__input {
@@ -115,4 +119,32 @@
   font-family: var(--font-body);
   font-size: var(--fs-body-l);
   line-height: var(--lh-body-l);
+}
+
+/* ---------- Mobile (Figma 430 frame) ----------
+   32px side padding, fields stacked full width, button centered. */
+@media (max-width: 600px) {
+  .register {
+    padding-inline: 32px;
+  }
+
+  .register__fields {
+    flex-direction: column;
+    gap: 47px; /* leaves room for the error message under each field */
+  }
+
+  .register__field {
+    flex: none;
+    width: 100%;
+  }
+
+  .register__success {
+    min-height: 374px; /* same height as the stacked form */
+  }
+}
+
+@media (max-width: 380px) {
+  .register {
+    padding-inline: 20px;
+  }
 }
