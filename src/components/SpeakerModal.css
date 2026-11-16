@@ -1,0 +1,165 @@
+/* ---------- Dialog + backdrop ---------- */
+.speaker-modal {
+  width: min(560px, 100% - 32px);
+  max-width: none;
+  max-height: calc(100% - 32px);
+  margin: auto;
+  padding: 0;
+  border: 0;
+  background: var(--color-grey);
+  color: var(--color-black);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  animation: speaker-modal-in 0.3s ease-out;
+}
+
+.speaker-modal::backdrop {
+  background: rgba(0, 0, 0, 0.7);
+  animation: speaker-backdrop-in 0.3s ease-out;
+}
+
+/* Closing: play the same animation in reverse, then the dialog closes */
+.speaker-modal.is-closing {
+  animation: speaker-modal-out 0.25s ease-in forwards;
+}
+
+.speaker-modal.is-closing::backdrop {
+  animation: speaker-backdrop-out 0.25s ease-in forwards;
+}
+
+@keyframes speaker-modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+}
+
+@keyframes speaker-modal-out {
+  to {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+}
+
+@keyframes speaker-backdrop-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes speaker-backdrop-out {
+  to {
+    opacity: 0;
+  }
+}
+
+/* ---------- Panel ---------- */
+.speaker-modal__panel {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 40px;
+}
+
+.speaker-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* Title hidden after sending: keep the X on the right */
+.speaker-modal__header:has(.visually-hidden) {
+  justify-content: flex-end;
+}
+
+.speaker-modal__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-h3);
+  letter-spacing: var(--ls-h3);
+}
+
+/* X button: two bars, 44 × 44 tap area */
+.speaker-modal__close {
+  position: relative;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.speaker-modal__close-bar {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 32px;
+  height: 3px;
+  background: var(--color-black);
+  transition: background-color 0.2s ease;
+}
+.speaker-modal__close-bar:nth-child(1) {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.speaker-modal__close-bar:nth-child(2) {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.speaker-modal__close:hover .speaker-modal__close-bar {
+  background: var(--color-secondary-700);
+}
+
+.speaker-modal__close:focus-visible,
+.speaker-modal .button:focus-visible {
+  outline: 2px solid var(--color-secondary-700);
+  outline-offset: 2px;
+}
+
+/* ---------- Form ---------- */
+.speaker-modal__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+}
+
+.speaker-modal__fields {
+  display: flex;
+  flex-direction: column;
+  gap: 40px; /* room for the error message under each field */
+  width: 100%;
+}
+
+/* Thank-you message: about the same height as the form, so the box doesn't jump */
+.speaker-modal__success {
+  min-height: 360px;
+}
+
+.speaker-modal__done {
+  margin-top: 32px;
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 600px) {
+  .speaker-modal__panel {
+    gap: 32px;
+    padding: 24px;
+  }
+
+  .speaker-modal .button--l {
+    padding-inline: 40px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .speaker-modal,
+  .speaker-modal::backdrop,
+  .speaker-modal.is-closing,
+  .speaker-modal.is-closing::backdrop {
+    animation: none;
+  }
+}

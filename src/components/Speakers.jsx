@@ -1,3 +1,4 @@
+import { useRef, useState } from 'react'
 import alexRiviera from '../assets/speakers/alex-riviera.jpg'
 import ninaLi from '../assets/speakers/nina-li.jpg'
 import marcusHolt from '../assets/speakers/marcus-holt.jpg'
@@ -7,6 +8,7 @@ import rinaPatel from '../assets/speakers/rina-patel.jpg'
 import Button from './Button.jsx'
 import Marquee from './Marquee.jsx'
 import SpeakerCard from './SpeakerCard.jsx'
+import SpeakerModal from './SpeakerModal.jsx'
 import './Speakers.css'
 
 /* align: where each card sits in its slot on desktop/tablet (staggered layout).
@@ -21,6 +23,9 @@ const SPEAKERS = [
 ]
 
 function Speakers() {
+  const [modalOpen, setModalOpen] = useState(false)
+  const speakerButtonRef = useRef(null)
+
   return (
     <section id="speakers" className="section speakers" aria-labelledby="speakers-title">
       <div className="section__inner">
@@ -34,10 +39,22 @@ function Speakers() {
       </div>
 
       <div className="speakers__cta">
-        <Button size="L" href="#become-a-speaker">
+        <Button
+          ref={speakerButtonRef}
+          type="button"
+          size="L"
+          aria-haspopup="dialog"
+          onClick={() => setModalOpen(true)}
+        >
           Become a speaker
         </Button>
       </div>
+
+      <SpeakerModal
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+        triggerRef={speakerButtonRef}
+      />
     </section>
   )
 }

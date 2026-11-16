@@ -1,0 +1,91 @@
+/* Shared form styles (Register + Become a speaker), for light backgrounds */
+
+.form-field {
+  position: relative;
+  min-width: 0;
+}
+
+.form-input {
+  display: block;
+  width: 100%;
+  height: 55px;
+  padding: 0 8px;
+  border: 2px solid var(--color-black);
+  border-radius: 0;
+  background: transparent;
+  color: var(--color-black);
+  font-family: var(--font-display);
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-h4);
+  letter-spacing: var(--ls-h4);
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+/* 3-line text box */
+.form-input--textarea {
+  height: auto;
+  padding-block: 10px;
+  resize: vertical;
+}
+
+.form-input::placeholder {
+  color: var(--color-black);
+  opacity: 1;
+}
+
+/* Hover / focus: navy border (matches the title underline) */
+.form-input:hover {
+  border-color: var(--color-secondary-700);
+}
+
+.form-input:focus {
+  border-color: var(--color-secondary-700);
+  box-shadow: inset 0 0 0 1px var(--color-secondary-700);
+}
+
+/* Error: thicker red border (also on hover/focus) + message below */
+.form-input.has-error {
+  border-color: var(--color-error);
+  box-shadow: inset 0 0 0 2px var(--color-error);
+}
+
+.form-error {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  font-family: var(--font-body);
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-caption);
+  letter-spacing: var(--ls-caption);
+  color: var(--color-black);
+}
+
+/* ---------- Thank-you message ---------- */
+.form-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  text-align: center;
+  outline: none;
+}
+
+.form-success__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-h3);
+  letter-spacing: var(--ls-h3);
+}
+
+.form-success__text {
+  font-family: var(--font-body);
+  font-size: var(--fs-body-l);
+  line-height: var(--lh-body-l);
+}

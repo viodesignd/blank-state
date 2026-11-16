@@ -86,6 +86,7 @@
   --color-grey: #d7d4cf; /* grey/base, grey/200 */
   --color-secondary-700: #020b3a; /* secondary/700 */
   --color-overlay: rgba(0, 0, 0, 0.4);
+  --color-error: #c4001d; /* form errors (not in Figma), readable on the grey */
 
   /* Font families */
   --font-display: 'Aeonik Pro', 'Satoshi', 'Inter', system-ui, sans-serif;
