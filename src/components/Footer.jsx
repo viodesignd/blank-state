@@ -10,9 +10,9 @@ const FOOTER = {
   social: [
     { label: 'instagram', href: 'https://www.instagram.com/vio_desgns/' },
     { label: 'linkedin', href: 'https://www.linkedin.com/in/lina-sirbu-8230971a6/' },
-    { label: 'twitter', href: '' }, // add the URL when available
   ],
-  copyright: 'VioDesigns @ 2025. All rights reserved.',
+  copyright: '© 2026 VioDesigns',
+  disclaimer: 'Concept project. Speakers and testimonials are fictional.',
 }
 
 function Footer() {
@@ -44,20 +44,16 @@ function Footer() {
         <ul className="footer__social">
           {FOOTER.social.map((link) => (
             <li key={link.label}>
-              {link.href ? (
-                <a href={link.href} target="_blank" rel="noopener noreferrer">
-                  {link.label}
-                  <span className="visually-hidden"> (opens in a new tab)</span>
-                </a>
-              ) : (
-                // No URL yet: plain text, so keyboard users don't land on a dead link
-                <span>{link.label}</span>
-              )}
+              <a href={link.href} target="_blank" rel="noopener noreferrer">
+                {link.label}
+                <span className="visually-hidden"> (opens in a new tab)</span>
+              </a>
             </li>
           ))}
         </ul>
 
         <p className="footer__copyright">{FOOTER.copyright}</p>
+        <p className="footer__disclaimer">{FOOTER.disclaimer}</p>
       </div>
     </footer>
   )

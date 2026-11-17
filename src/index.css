@@ -140,6 +140,7 @@
   --space-margin: clamp(16px, 4.06vw - 1.46px, 57px); /* footer margin: 57 → 16 */
   --space-title: clamp(20px, 17.87px + 0.495vw, 25px); /* Desktop/Title: 25 → 20 */
   --space-section-x: clamp(16px, 4.356vw - 2.73px, 60px); /* side padding: 60 / 32 / 16 */
+  --header-height-mobile: 80px; /* mobile header (≤ 767px); the hero fills the rest of the screen */
   --space-section-gap: 78px; /* title → content (same on all frames) */
   --content-width: 1320px;
 }

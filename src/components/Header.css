@@ -152,7 +152,7 @@
 /* ---------- Mobile header (≤ 767px): hamburger replaces the nav ---------- */
 @media (max-width: 767px) {
   .header {
-    min-height: 80px;
+    height: var(--header-height-mobile);
     padding-block: 16px;
   }
 

@@ -88,15 +88,39 @@
   }
 }
 
-/* ---------- Mobile (Figma 430 frame) ---------- */
+/* ---------- Mobile (Figma 430 frame) ----------
+   Header + hero = exactly one screen (100svh, so the address bar never
+   cuts it off). The headline and gaps shrink with the screen height,
+   and flexbox shares out the remaining space. */
 @media (max-width: 600px) {
   .hero {
-    height: 857px;
-    padding: 0 32px 25px;
+    --hero-gap: clamp(16px, 5svh, 71px);
+    --hero-pad-x: 32px;
+    justify-content: space-between;
+    gap: var(--hero-gap);
+    height: calc(100vh - var(--header-height-mobile)); /* fallback: browsers without svh */
+    height: calc(100svh - var(--header-height-mobile));
+    min-height: 440px; /* landscape / tiny screens: grow and scroll instead of overlapping */
+    padding: clamp(12px, 3svh, 40px) var(--hero-pad-x) clamp(16px, 3svh, 25px);
   }
 
+  /* Headline: as large as the design allows, but small enough that
+     "REBUILD THE" stays on one line and the hero fits a short screen */
+  .hero__title {
+    gap: clamp(8px, 2.5svh, 21px);
+    font-size: min(var(--fs-display), calc((100vw - 2 * var(--hero-pad-x)) / 6.1), 8.4svh);
+  }
+
+  .hero__message {
+    gap: clamp(8px, 2.5svh, 21px);
+  }
+
+  /* Message + button centred in the space above the date */
   .hero__content {
-    gap: 71px;
+    flex: 1;
+    justify-content: center;
+    gap: var(--hero-gap);
+    margin-bottom: 0;
   }
 
   /* Button centered */
@@ -112,7 +136,7 @@
   }
 
   .hero__date {
-    margin-top: 66px;
+    margin-top: 0;
     padding-inline: 0;
   }
 }
@@ -120,6 +144,7 @@
 /* Very narrow phones: keep the side padding in proportion */
 @media (max-width: 380px) {
   .hero {
-    padding-inline: 20px;
+    --hero-pad-x: 20px;
+    padding-inline: var(--hero-pad-x);
   }
 }

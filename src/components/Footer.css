@@ -82,6 +82,17 @@
   letter-spacing: var(--ls-caption);
 }
 
+/* Small line under the copyright */
+.footer__disclaimer {
+  margin-top: 4px;
+  font-family: var(--font-body);
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-caption);
+  letter-spacing: var(--ls-caption);
+  opacity: 0.8;
+}
+
 /* ---------- Tablet ---------- */
 @media (max-width: 1199px) {
   .footer {
