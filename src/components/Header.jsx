@@ -14,6 +14,7 @@ function Header() {
   const menuRef = useRef(null)
   const toggleRef = useRef(null)
   const pendingHash = useRef(null) // section to scroll to once the menu has closed
+  const headerRef = useRef(null)
 
   const closeMenu = () => setMenuOpen(false)
 
@@ -70,6 +71,21 @@ function Header() {
     }
   }, [menuOpen])
 
+  // Share the sticky header's height with the CSS (--header-height),
+  // so in-page links don't hide section titles underneath it
+  useEffect(() => {
+    const header = headerRef.current
+    const root = document.documentElement
+    const update = () => root.style.setProperty('--header-height', `${header.offsetHeight}px`)
+    update()
+    const observer = new ResizeObserver(update)
+    observer.observe(header)
+    return () => {
+      observer.disconnect()
+      root.style.removeProperty('--header-height')
+    }
+  }, [])
+
   // Close the menu if the window grows past the mobile header size
   useEffect(() => {
     const mq = window.matchMedia('(min-width: 768px)')
@@ -79,7 +95,7 @@ function Header() {
   }, [])
 
   return (
-    <header className="header">
+    <header ref={headerRef} className="header">
       <a href="/" className="header__logo" aria-label="Blank State home">
         <img src={logo} alt="Blank State" width="441.551" height="68.944" />
       </a>

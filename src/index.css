@@ -157,6 +157,12 @@ body {
   margin: 0;
 }
 
+/* In-page links (#speakers, #register…) stop below the sticky header.
+   --header-height is kept up to date by Header.jsx */
+html {
+  scroll-padding-top: var(--header-height, 0px);
+}
+
 body {
   font-family: var(--font-body);
   font-size: var(--fs-body-m);

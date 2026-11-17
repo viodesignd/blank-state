@@ -1,4 +1,7 @@
 .header {
+  position: sticky; /* stays at the top while the page scrolls */
+  top: 0;
+  z-index: 50; /* above the page content; the skip link (200) still shows on top */
   display: flex;
   align-items: center;
   justify-content: space-between;
