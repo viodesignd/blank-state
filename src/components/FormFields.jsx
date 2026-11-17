@@ -32,11 +32,10 @@ function FormFields({ fields, form, idPrefix, className = '' }) {
               aria-describedby={error ? errorId : undefined}
               className={`form-input${Control === 'textarea' ? ' form-input--textarea' : ''}${error ? ' has-error' : ''}`}
             />
-            {error && (
-              <p id={errorId} className="form-error">
-                {error}
-              </p>
-            )}
+            {/* Always rendered so screen readers announce it when an error appears or changes */}
+            <p id={errorId} className="form-error" aria-live="polite">
+              {error}
+            </p>
           </div>
         )
       })}

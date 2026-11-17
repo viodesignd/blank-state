@@ -101,7 +101,7 @@ function Header() {
         ref={toggleRef}
         type="button"
         className="menu-toggle"
-        aria-label="Open menu"
+        aria-label="Menu"
         aria-expanded={menuOpen}
         aria-controls="mobile-menu"
         onClick={() => setMenuOpen(true)}
@@ -132,7 +132,7 @@ function Header() {
           </button>
         </div>
 
-        <nav className="mobile-menu__nav" aria-label="Main">
+        <nav className="mobile-menu__nav" aria-label="Main menu">
           {NAV_LINKS.map((link) => (
             <a key={link.href} href={link.href}>
               {link.label}

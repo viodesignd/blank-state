@@ -47,11 +47,11 @@ function Footer() {
               {link.href ? (
                 <a href={link.href} target="_blank" rel="noopener noreferrer">
                   {link.label}
+                  <span className="visually-hidden"> (opens in a new tab)</span>
                 </a>
               ) : (
-                <a href="#" aria-disabled="true" onClick={(e) => e.preventDefault()}>
-                  {link.label}
-                </a>
+                // No URL yet: plain text, so keyboard users don't land on a dead link
+                <span>{link.label}</span>
               )}
             </li>
           ))}

@@ -1,7 +1,7 @@
 /*
   Conference schedule — edit talks here; the Agenda section reads from this file.
 
-  Each day:  { id, label, talks: [...] }
+  Each day:  { id, label, spoken, talks: [...] }   (spoken: the date read aloud, e.g. '3 April')
   Each talk: { time, title, speaker? }   (speaker is optional, e.g. for breaks)
 
   Talks alternate between the top and bottom of the zigzag timeline automatically.
@@ -12,6 +12,7 @@ export const AGENDA = [
   {
     id: '03apr',
     label: '03Apr',
+    spoken: '3 April', // read by screen readers
     talks: [
       { time: '09:00', title: 'Opening Keynote', speaker: 'Alex Riviera' },
       { time: '10:30', title: 'Future of UX Panel', speaker: 'Nina Li + guests' },
@@ -23,6 +24,7 @@ export const AGENDA = [
   {
     id: '04apr',
     label: '04Apr',
+    spoken: '4 April', // read by screen readers
     talks: [
       { time: '09:30', title: 'Type in Motion', speaker: 'Jonas Weber' },
       { time: '11:00', title: 'Design Systems at Scale', speaker: 'Alma Castro' },
@@ -34,6 +36,7 @@ export const AGENDA = [
   {
     id: '05apr',
     label: '05Apr',
+    spoken: '5 April', // read by screen readers
     talks: [
       { time: '09:30', title: 'Brand Identity Teardown', speaker: 'Marcus Holt' },
       { time: '11:00', title: 'Variable Fonts, Live', speaker: 'Jonas Weber' },

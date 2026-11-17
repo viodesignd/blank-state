@@ -58,6 +58,7 @@ function Agenda() {
                 aria-selected={selected}
                 aria-controls="agenda-panel"
                 tabIndex={selected ? 0 : -1}
+                aria-label={day.spoken}
                 className={`date-tab${selected ? ' is-selected' : ''}`}
                 onClick={() => selectDay(day.id)}
                 onKeyDown={(e) => onTabKeyDown(e, i)}
@@ -72,6 +73,7 @@ function Agenda() {
           id="agenda-panel"
           className="agenda__panel"
           role="tabpanel"
+          tabIndex={0}
           aria-labelledby={`agenda-tab-${activeId}`}
         >
           {/* key → remount on day change, so the drawing animation replays */}

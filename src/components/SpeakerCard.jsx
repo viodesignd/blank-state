@@ -4,9 +4,14 @@ import './SpeakerCard.css'
    ("start" | "center" | "end"), matching the staggered Figma layout. */
 function SpeakerCard({ name, role, photo, align = 'start' }) {
   return (
-    <article className={`speaker-card speaker-card--${align}`} tabIndex={0}>
+    <article
+      className={`speaker-card speaker-card--${align}`}
+      tabIndex={0}
+      aria-label={`${name}, ${role}`}
+    >
       <div className="speaker-card__photo">
-        <img src={photo} alt={name} width="312" height="262" loading="lazy" />
+        {/* Decorative: the name is the heading right below */}
+        <img src={photo} alt="" width="312" height="262" loading="lazy" />
       </div>
       <div className="speaker-card__info">
         <h3 className="speaker-card__name">{name}</h3>

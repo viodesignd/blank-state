@@ -10,9 +10,47 @@
   animation: marquee-scroll 20s linear infinite;
 }
 
-/* Pause while hovered */
-.marquee:hover .marquee__track {
+/* Pause while hovered, or with the pause button */
+.marquee:hover .marquee__track,
+.marquee.is-paused .marquee__track {
   animation-play-state: paused;
+}
+
+/* Heading and pause/play button share one grid cell:
+   the button sits at the right end of the title, above the yellow line */
+.marquee-wrap {
+  display: grid;
+}
+
+.marquee-wrap > * {
+  grid-area: 1 / 1;
+}
+
+.marquee__toggle {
+  z-index: 1;
+  align-self: center;
+  justify-self: end;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 4px; /* centre above the 4px underline */
+  padding: 0;
+  border: 2px solid var(--color-primary);
+  border-radius: 0;
+  background: var(--color-black);
+  /* soft black edge so the scrolling words fade out behind the button */
+  box-shadow: -16px 0 16px 4px var(--color-black);
+  color: var(--color-primary);
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.marquee__toggle:hover {
+  background: var(--color-primary);
+  color: var(--color-black);
 }
 
 .marquee__group {
@@ -42,8 +80,13 @@
   }
 }
 
+/* Nothing moves, so the button isn't needed */
 @media (prefers-reduced-motion: reduce) {
   .marquee__track {
     animation: none;
+  }
+
+  .marquee__toggle {
+    display: none;
   }
 }

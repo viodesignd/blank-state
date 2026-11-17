@@ -10,8 +10,11 @@ import WhyAttend from './components/WhyAttend.jsx'
 function App() {
   return (
     <>
+      <a className="skip-link" href="#main">
+        Skip to content
+      </a>
       <Header />
-      <main>
+      <main id="main" tabIndex={-1}>
         <Hero />
         <WhyAttend />
         <Speakers />
