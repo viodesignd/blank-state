@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react'
 import Agenda from './components/Agenda.jsx'
 import Footer from './components/Footer.jsx'
 import Header from './components/Header.jsx'
@@ -23,6 +24,8 @@ function App() {
         <Register />
       </main>
       <Footer />
+      {/* Vercel Web Analytics: page views, only counted on the deployed site */}
+      <Analytics />
     </>
   )
 }
